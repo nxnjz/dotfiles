@@ -1,0 +1,29 @@
+# for nested session on remote
+
+
+set -g prefix C-b
+#set -g mouse on
+#use vi copy bindings
+setw -g mode-keys vi
+#use y in copy mode to yank to clipb
+#bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'xclip -in -selection clipboard'
+bind-key -T copy-mode-vi v send-keys -X begin-selection
+#bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle \; send -X begin-selection
+bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
+#bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "xclip -in -selection clipboard >/dev/null 2>&1"
+
+#navigate panes with prefix+vimnav
+bind-key 'j' select-pane -D
+bind-key 'k' select-pane -U
+bind-key 'l' select-pane -R
+bind-key 'h' select-pane -L
+
+#set -g @resurrect-capture-pane-contents 'on'
+
+# List of plugins
+#set -g @plugin 'tmux-plugins/tpm'
+#set -g @plugin 'tmux-plugins/tmux-resurrect'
+#set -g @plugin 'tmux-plugins/tmux-sensible'
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+#run -b '~/.tmux/plugins/tpm/tpm'
