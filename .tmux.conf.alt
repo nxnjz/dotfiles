@@ -1,6 +1,7 @@
 # for nested session on remote
 
 
+set-option -g history-limit 12000
 set -g prefix C-b
 #set -g mouse on
 #use vi copy bindings
