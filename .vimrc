@@ -76,6 +76,7 @@ function! XTermPasteBegin()
 endfunction
 
 "use 2spaces for indent instead of tabs
+set softtabstop=2
 set tabstop=2
 set shiftwidth=2
 set expandtab

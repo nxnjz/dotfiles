@@ -12,11 +12,11 @@
 #myconf (for new lines only. lines below this section may or may not be modified)
 #
 for_window [class="^.*"] border pixel 0 #no window titles, for gaps to work
-gaps inner 3
-gaps outer 3
+gaps inner 1
+gaps outer 1
 #gaps top 22
-bindsym Mod1+c exec chromium
-exec xautolock -notify 15 -time 10 -locker 'i3lock -i Pictures/jfvalois.png -e -b -u' #lock screen
+exec xautolock -notify 15 -time 10 -locker 'i3lock -c 111111 -e -b -u' #lock screen
+bindsym Mod1+z exec i3lock -c 111111 -e -b -u #lock screen
 #bind special keyboard keys to volume control
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer sset Master 5%+
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer sset Master 5%-
@@ -27,14 +27,28 @@ exec_always --no-startup-id compton --active-opacity 1 --inactive-opacity 0.95 -
 exec_always --no-startup-id xset +fp /home/karl/.fonts
 exec_always --no-startup-id xset fp rehash
 bindsym Mod1+x exec i3-msg move workspace to output left 
+#displays are hard
 exec --no-startup-id /home/karl/bin/fixDisplay.sh
-exec xrandr --output eDP-1 --right-of HDMI-1
+exec xrandr --output eDP-1-1 --right-of HDMI-1-1
+exec xrandr --output eDP-1-1 --gamma 0.8:0.8:0.8 #inc contrast
+exec xrandr --output eDP-1-1 --same-as HDMI-1-1 #blank screen fix
+exec xrandr --output eDP-1-1 --right-of HDMI-1-1 #blank screen fix
+
 #exec i3-msg restart
 #exec_always --no-startup-id /home/karl/.config/polybar/launch.sh
 exec --no-startup-id nitrogen --restore #restore background image
 exec_always --no-startup-id xinput set-prop 'Synaptics TM3336-001' 'libinput Accel Speed' 0.5
 exec_always --no-startup-id xinput set-prop 'Synaptics TM3336-001' 'libinput Tapping Enabled' 1
 #exec /home/karl/bin/i3launchapps.sh #autolaunch usual apps in their workspaces
+# appstart bindings
+bindsym Mod1+Return exec konsole
+bindsym Mod1+c exec chromium
+bindsym Mod1+i exec firefox
+bindsym Mod1+b exec BurpSuitePro
+bindsym Mod1+p exec spotify
+bindsym Mod1+a exec freeplane
+bindsym Mod1+t exec thunderbird
+bindsym Mod1+o exec localc
 # bind alt+g to open guake and run task
 bindsym Mod1+g exec guake -t && guake -e t
 
@@ -64,8 +78,6 @@ set $right l
 # use Mouse+Mod1 to drag floating windows to their wanted position
 floating_modifier Mod1
 
-# start a terminal
-bindsym Mod1+Return exec konsole
 
 # kill focused window
 bindsym Mod1+Shift+q kill
@@ -122,7 +134,7 @@ bindsym Mod1+Shift+space floating toggle
 bindsym Mod1+space focus mode_toggle
 
 # focus the parent container
-bindsym Mod1+a focus parent
+#bindsym Mod1+a focus parent #idk what that does
 
 # focus the child container
 #bindsym Mod1+d focus child

@@ -91,7 +91,6 @@ export VULTR_API_KEY=`cat ~/.keys/vultr`
 shopt -s dirspell direxpand autocd cdspell cdable_vars
 
 vultradm=~/Documents/rust/vultradm/
-movies=/mnt/omv/dev-disk-by-label-main1/everything/main/mydata/media/movies
 
 cd() {
 if [ $# -eq 0 ]
@@ -104,10 +103,10 @@ fi
 
 
 export ANDROID_HOME=$HOME/Android/Sdk
-#export PATH=$PATH:$ANDROID_HOME/emulator
-#export PATH=$PATH:$ANDROID_HOME/tools
-#export PATH=$PATH:$ANDROID_HOME/tools/bin
-#export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:/home/karl/go/bin
 export GOPATH=/home/karl/go
 export GO111MODULE=on
@@ -123,13 +122,21 @@ export GITROB_ACCESS_TOKEN=`cat ~/.keys/gitrob`
 alias thewp="wpscan --rua -t 20 -e vp,vt,cb,dbe,u1-100 --plugins-detection mixed --api-token `cat ~/.keys/wpscan` --url"
 alias theaquatone="aquatone -ports xlarge -http-timeout 30000 -scan-timeout 1000 -screenshot-timeout 60000 -out aquatone"
 alias t=task
+alias "tl"="task list"
 alias ti=timew
 alias sshh="ssh -o 'UserKnownHostsFile /dev/null'"
-alias ovh="ssh root@ovh.ovh"
-alias contabo="ssh root@0.contabo"
+alias ovh="mosh root@ovh.ovh"
+alias contabo="mosh root@0.contabo"
 alias bd=". bd -si"
 alias rg="rg -i"
 alias toclipb="xclip -selection clipboard"
+alias nmap="sudo nmap"
+alias netctl="sudo netctl"
+
+cdb() {
+  rg -i "(lof|tit|tag|eg).*$1"
+}
+
 
 
 ############
