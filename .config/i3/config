@@ -9,8 +9,6 @@
 # layout, use the i3-config-wizard
 
 
-#myconf (for new lines only. lines below this section may or may not be modified)
-#
 for_window [class="^.*"] border pixel 0 #no window titles, for gaps to work
 gaps inner 1
 gaps outer 1
@@ -36,7 +34,8 @@ exec xrandr --output eDP-1-1 --right-of HDMI-1-1 #blank screen fix
 
 #exec i3-msg restart
 #exec_always --no-startup-id /home/karl/.config/polybar/launch.sh
-exec --no-startup-id nitrogen --restore #restore background image
+#exec --no-startup-id nitrogen --restore #restore background image
+exec_always --no-startup-id pacwall
 exec_always --no-startup-id xinput set-prop 'Synaptics TM3336-001' 'libinput Accel Speed' 0.5
 exec_always --no-startup-id xinput set-prop 'Synaptics TM3336-001' 'libinput Tapping Enabled' 1
 #exec /home/karl/bin/i3launchapps.sh #autolaunch usual apps in their workspaces
