@@ -25,17 +25,14 @@ exec_always --no-startup-id compton --active-opacity 1 --inactive-opacity 0.95 -
 exec_always --no-startup-id xset +fp /home/karl/.fonts
 exec_always --no-startup-id xset fp rehash
 bindsym Mod1+x exec i3-msg move workspace to output left 
-#displays are hard
-exec --no-startup-id /home/karl/bin/fixDisplay.sh
-exec xrandr --output eDP-1-1 --right-of HDMI-1-1
-exec xrandr --output eDP-1-1 --gamma 0.8:0.8:0.8 #inc contrast
-exec xrandr --output eDP-1-1 --same-as HDMI-1-1 #blank screen fix
-exec xrandr --output eDP-1-1 --right-of HDMI-1-1 #blank screen fix
+#exec --no-startup-id /home/karl/bin/fixDisplay.sh
+exec xrandr --output HDMI-0 --auto --primary --left-of DVI-I-0
+exec xrandr --output DVI-I-0 --pos 3440x360  #align bottom edges
 
 #exec i3-msg restart
 #exec_always --no-startup-id /home/karl/.config/polybar/launch.sh
-#exec --no-startup-id nitrogen --restore #restore background image
-exec_always --no-startup-id pacwall
+exec --no-startup-id nitrogen --restore #restore background image
+#exec_always --no-startup-id pacwall
 exec_always --no-startup-id xinput set-prop 'Synaptics TM3336-001' 'libinput Accel Speed' 0.5
 exec_always --no-startup-id xinput set-prop 'Synaptics TM3336-001' 'libinput Tapping Enabled' 1
 #exec /home/karl/bin/i3launchapps.sh #autolaunch usual apps in their workspaces
