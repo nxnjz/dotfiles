@@ -21,7 +21,7 @@ bindsym XF86AudioLowerVolume exec --no-startup-id amixer sset Master 5%-
 exec_always --no-startup-id xset r rate 240 75 #set keyboard repeat rate
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5
-exec_always --no-startup-id compton --active-opacity 1 --inactive-opacity 0.95 --mark-ovredir-focused --use-damage --sw-opti --detect-client-opacity --unredir-if-possible --daemon --opacity-rule 100:class_g="'vlc'" --opacity-rule 100:class_g="'Chromium'" --opacity-rule 100:class_g="'remote-viewer'"
+exec_always --no-startup-id compton --active-opacity 1 --inactive-opacity 0.85 --mark-ovredir-focused --use-damage --sw-opti --detect-client-opacity --unredir-if-possible --daemon --opacity-rule 100:class_g="'vlc'" --opacity-rule 100:class_g="'Chromium'" --opacity-rule 100:class_g="'remote-viewer'"
 exec_always --no-startup-id xset +fp /home/karl/.fonts
 exec_always --no-startup-id xset fp rehash
 bindsym Mod1+x exec i3-msg move workspace to output left 
@@ -39,10 +39,9 @@ exec_always --no-startup-id xinput set-prop 'Synaptics TM3336-001' 'libinput Tap
 # appstart bindings
 bindsym Mod1+Return exec konsole
 bindsym Mod1+c exec chromium
-bindsym Mod1+i exec firefox
+bindsym Mod1+i exec firefox --new-instance --ProfileManager
 bindsym Mod1+b exec BurpSuitePro
 bindsym Mod1+p exec spotify
-bindsym Mod1+a exec freeplane
 bindsym Mod1+t exec thunderbird
 bindsym Mod1+o exec localc
 # bind alt+g to open guake and run task
@@ -130,7 +129,7 @@ bindsym Mod1+Shift+space floating toggle
 bindsym Mod1+space focus mode_toggle
 
 # focus the parent container
-#bindsym Mod1+a focus parent #idk what that does
+bindsym Mod1+a focus parent #now i know
 
 # focus the child container
 #bindsym Mod1+d focus child

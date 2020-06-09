@@ -17,14 +17,14 @@ shopt -s checkwinsize
 
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
+  debian_chroot=$(cat /etc/debian_chroot)
 fi
 
 color_prompt=yes;
 
 function nonzero_return() {
-	RETVAL=$?
-	[ $RETVAL -ne 0 ] && echo "$RETVAL"
+  RETVAL=$?
+  [ $RETVAL -ne 0 ] && echo "$RETVAL"
 }
 
 reset=`tput sgr0`
@@ -37,19 +37,19 @@ PS1="\[$bold\]\[$green\]\u@\h\[$reset\]:\[$blue\]\w\[$reset\]\\$\`nonzero_return
 # If this is an xterm set the title to user@host:dir
 #case "$TERM" in
 #xterm*|rxvt*)
-    #PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    #;;
+#PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+#;;
 #*)
-    #;;
-#esac
+  #;;
+  #esac
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
+  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+  alias ls='ls --color=auto'
+  alias grep='grep --color=auto'
+  alias fgrep='fgrep --color=auto'
+  alias egrep='egrep --color=auto'
 fi
 
 
@@ -63,7 +63,7 @@ alias l='ls -la'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+  . ~/.bash_aliases
 fi
 
 # enable programmable completion features (you don't need to enable
@@ -80,8 +80,8 @@ fi
 export LC_ALL=en_US.UTF-8
 
 if [ -f ~/.config/exercism/exercism_completion.bash ]; then
-      source ~/.config/exercism/exercism_completion.bash
-    fi
+  source ~/.config/exercism/exercism_completion.bash
+fi
 
 alias andstudio='/home/karl/software/android-studio/bin/studio.sh'
 source /home/karl/.cargo/env
@@ -93,12 +93,12 @@ shopt -s dirspell direxpand autocd cdspell cdable_vars
 vultradm=~/Documents/rust/vultradm/
 
 cd() {
-if [ $# -eq 0 ]
-then
-        builtin cd $HOME && pushd -n $OLDPWD 1>/dev/null
-else
-        builtin cd "$*" && pushd -n $OLDPWD 1>/dev/null
-fi
+  if [ $# -eq 0 ]
+  then
+    builtin cd $HOME && pushd -n $OLDPWD 1>/dev/null
+  else
+    builtin cd "$*" && pushd -n $OLDPWD 1>/dev/null
+  fi
 }
 
 
@@ -131,8 +131,17 @@ alias bd=". bd -si"
 alias rg="rg -i"
 alias toclipb="xclip -selection clipboard"
 alias nmap="sudo nmap"
+alias thenmap="nmap -sV -sC -vvv -T4"
 alias netctl="sudo netctl"
 alias s="sudo"
+alias profilefox="firefox --new-instance --ProfileManager"
+
+toburp() {
+  for url in `cat $1 | cut -d ' ' -f1`
+  do 
+    curl --proxy http://127.0.0.1:8080 -k $url
+  done
+}
 
 cdb() {
   rg -i "(lof|tit|tag|eg).*$1"
@@ -154,10 +163,10 @@ pyenv() {
   fi
 
   case "$command" in
-  rehash|shell)
-    eval "$(pyenv "sh-$command" "$@")";;
-  *)
-    command pyenv "$command" "$@";;
+    rehash|shell)
+      eval "$(pyenv "sh-$command" "$@")";;
+    *)
+      command pyenv "$command" "$@";;
   esac
 }
 
