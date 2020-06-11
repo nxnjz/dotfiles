@@ -14,7 +14,7 @@ gaps inner 1
 gaps outer 1
 #gaps top 22
 exec xautolock -notify 15 -time 10 -locker 'i3lock -c 111111 -e -b -u' #lock screen
-bindsym Mod1+z exec i3lock -c 111111 -e -b -u #lock screen
+bindsym Mod1+` exec i3lock -c 111111 -e -b -u #lock screen
 #bind special keyboard keys to volume control
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer sset Master 5%+
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer sset Master 5%-
@@ -25,13 +25,13 @@ exec_always --no-startup-id compton --active-opacity 1 --inactive-opacity 0.85 -
 exec_always --no-startup-id xset +fp /home/karl/.fonts
 exec_always --no-startup-id xset fp rehash
 bindsym Mod1+x exec i3-msg move workspace to output left 
-#exec --no-startup-id /home/karl/bin/fixDisplay.sh
-exec xrandr --output HDMI-0 --auto --primary --left-of DVI-I-0
-exec xrandr --output DVI-I-0 --pos 3440x360  #align bottom edges
+exec_always --no-startup-id /home/karl/bin/fixDisplay.sh
+#exec xrandr --output HDMI-0 --auto --primary --left-of DVI-I-0
+#exec xrandr --output DVI-I-0 --pos 3440x360  #align bottom edges
 
 #exec i3-msg restart
 #exec_always --no-startup-id /home/karl/.config/polybar/launch.sh
-exec --no-startup-id nitrogen --restore #restore background image
+exec_always --no-startup-id nitrogen --restore #restore background image
 #exec_always --no-startup-id pacwall
 exec_always --no-startup-id xinput set-prop 'Synaptics TM3336-001' 'libinput Accel Speed' 0.5
 exec_always --no-startup-id xinput set-prop 'Synaptics TM3336-001' 'libinput Tapping Enabled' 1
@@ -132,7 +132,7 @@ bindsym Mod1+space focus mode_toggle
 bindsym Mod1+a focus parent #now i know
 
 # focus the child container
-bindsym Mod1+d focus child
+bindsym Mod1+z focus child
 
 # move the currently focused window to the scratchpad
 bindsym Mod1+Shift+minus move scratchpad
