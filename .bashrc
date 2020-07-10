@@ -127,6 +127,7 @@ alias ti=timew
 alias sshh="ssh -o 'UserKnownHostsFile /dev/null'"
 alias ovh="mosh root@ovh.ovh"
 alias contabo="mosh root@0.contabo"
+alias s0hetz="mosh root@s0.hetz"
 alias bd=". bd -si"
 alias rg="rg -i"
 alias toclipb="xclip -selection clipboard"

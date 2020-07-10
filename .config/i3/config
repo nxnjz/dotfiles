@@ -8,11 +8,11 @@
 # To get a config file with the same key positions, but for your current
 # layout, use the i3-config-wizard
 
-
-for_window [class="^.*"] border pixel 0 #no window titles, for gaps to work
+#no window titles, for gaps to work
+for_window [class="^.*"] border pixel 0 
 gaps inner 1
 gaps outer 1
-#gaps top 22
+#gaps top 1
 exec xautolock -notify 15 -time 10 -locker 'i3lock -c 111111 -e -b -u' #lock screen
 bindsym Mod1+` exec i3lock -c 111111 -e -b -u #lock screen
 #bind special keyboard keys to volume control
@@ -33,17 +33,23 @@ exec_always --no-startup-id /home/karl/bin/fixDisplay.sh
 #exec_always --no-startup-id /home/karl/.config/polybar/launch.sh
 exec_always --no-startup-id nitrogen --restore #restore background image
 #exec_always --no-startup-id pacwall
+#touchpad mouse 
 exec_always --no-startup-id xinput set-prop 'Synaptics TM3336-001' 'libinput Accel Speed' 0.5
 exec_always --no-startup-id xinput set-prop 'Synaptics TM3336-001' 'libinput Tapping Enabled' 1
+#mouse mouse accel factor
+exec_always --no-startup-id xinput --set-prop 13 299 0.7
 #exec /home/karl/bin/i3launchapps.sh #autolaunch usual apps in their workspaces
+exec --no-startup-id "i3-msg 'workspace 1; append_layout ~/.config/i3/ws1.json'"
 # appstart bindings
 bindsym Mod1+Return exec konsole
 bindsym Mod1+c exec chromium
 bindsym Mod1+i exec firefox --new-instance --ProfileManager
-bindsym Mod1+b exec BurpSuitePro
+bindsym Mod1+b exec burpsuite
 bindsym Mod1+p exec spotify
 bindsym Mod1+t exec thunderbird
 bindsym Mod1+o exec localc
+exec --no-startup-id deadd-notification-center
+bindsym Mod1+n exec kill -s USR1 $(pidof deadd-notification-center)
 # bind alt+g to open guake and run task
 bindsym Mod1+g exec guake -t && guake -e t
 
@@ -129,7 +135,7 @@ bindsym Mod1+Shift+space floating toggle
 bindsym Mod1+space focus mode_toggle
 
 # focus the parent container
-bindsym Mod1+a focus parent #now i know
+bindsym Mod1+a focus parent 
 
 # focus the child container
 bindsym Mod1+z focus child
