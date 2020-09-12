@@ -14,7 +14,7 @@ gaps inner 1
 gaps outer 1
 #gaps top 1
 exec xautolock -notify 15 -time 10 -locker 'i3lock -c 111111 -e -b -u' #lock screen
-bindsym Mod1+` exec i3lock -c 111111 -e -b -u #lock screen
+bindsym Mod1+q exec i3lock -c 111111 -e -b -u #lock screen
 #bind special keyboard keys to volume control
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer sset Master 5%+
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer sset Master 5%-
@@ -40,6 +40,7 @@ exec_always --no-startup-id xinput set-prop 'Synaptics TM3336-001' 'libinput Tap
 exec_always --no-startup-id xinput --set-prop 13 299 0.7
 #exec /home/karl/bin/i3launchapps.sh #autolaunch usual apps in their workspaces
 exec --no-startup-id "i3-msg 'workspace 1; append_layout ~/.config/i3/ws1.json'"
+exec --no-startup-id "i3-msg 'workspace 3; append_layout ~/.config/i3/ws3.json'"
 # appstart bindings
 bindsym Mod1+Return exec konsole
 bindsym Mod1+c exec chromium

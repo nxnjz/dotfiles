@@ -2,7 +2,7 @@
 # /home/karl/.nvidia-settings-rc
 #
 # Configuration file for nvidia-settings - the NVIDIA X Server Settings utility
-# Generated on Fri Jun  5 11:15:27 2020
+# Generated on Wed Aug 19 06:00:24 2020
 #
 
 # ConfigProperties:
@@ -21,11 +21,11 @@ Timer = Memory_Used_(GPU_0),Yes,3000
 
 yuki:0.0/SyncToVBlank=1
 yuki:0.0/LogAniso=0
-yuki:0.0/FSAA=11
+yuki:0.0/FSAA=0
 yuki:0.0/TextureClamping=1
 yuki:0.0/FXAA=0
 yuki:0.0/AllowFlipping=1
-yuki:0.0/FSAAAppControlled=0
+yuki:0.0/FSAAAppControlled=1
 yuki:0.0/LogAnisoAppControlled=1
 yuki:0.0/OpenGLImageSettings=1
 yuki:0.0/FSAAAppEnhanced=0
@@ -33,9 +33,9 @@ yuki:0.0/ShowGraphicsVisualIndicator=0
 yuki:0[DPY:DVI-I-0]/RedBrightness=0.000000
 yuki:0[DPY:DVI-I-0]/GreenBrightness=0.000000
 yuki:0[DPY:DVI-I-0]/BlueBrightness=0.000000
-yuki:0[DPY:DVI-I-0]/RedContrast=-0.004560
-yuki:0[DPY:DVI-I-0]/GreenContrast=-0.004560
-yuki:0[DPY:DVI-I-0]/BlueContrast=-0.004560
+yuki:0[DPY:DVI-I-0]/RedContrast=0.000000
+yuki:0[DPY:DVI-I-0]/GreenContrast=0.000000
+yuki:0[DPY:DVI-I-0]/BlueContrast=0.000000
 yuki:0[DPY:DVI-I-0]/RedGamma=1.000000
 yuki:0[DPY:DVI-I-0]/GreenGamma=1.000000
 yuki:0[DPY:DVI-I-0]/BlueGamma=1.000000

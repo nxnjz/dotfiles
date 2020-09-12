@@ -83,9 +83,9 @@ if [ -f ~/.config/exercism/exercism_completion.bash ]; then
   source ~/.config/exercism/exercism_completion.bash
 fi
 
-alias andstudio='/home/karl/software/android-studio/bin/studio.sh'
-source /home/karl/.cargo/env
-export PATH=/home/karl/.cargo/bin:/home/karl/.local/bin:/home/karl/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/karl/.gem/ruby/2.6.0/bin
+alias andstudio='$HOME/software/android-studio/bin/studio.sh'
+source $HOME/.cargo/env
+export PATH=$HOME/.cargo/bin:$HOME/.local/bin:$HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:$HOME/.gem/ruby/2.6.0/bin
 export VULTR_API_KEY=`cat ~/.keys/vultr`
 #alias ls='exa'
 shopt -s dirspell direxpand autocd cdspell cdable_vars
@@ -107,8 +107,8 @@ export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
-export PATH=$PATH:/home/karl/go/bin
-export GOPATH=/home/karl/go
+export PATH=$PATH:$HOME/go/bin
+export GOPATH=$HOME/go
 export GO111MODULE=on
 export PATH=$PATH:$GOPATH/bin
 export BB=~/Document/bugbounty
@@ -128,6 +128,7 @@ alias sshh="ssh -o 'UserKnownHostsFile /dev/null'"
 alias ovh="mosh root@ovh.ovh"
 alias contabo="mosh root@0.contabo"
 alias s0hetz="mosh root@s0.hetz"
+alias s1hetz="mosh root@s1.hetz"
 alias bd=". bd -si"
 alias rg="rg -i"
 alias toclipb="xclip -selection clipboard"
@@ -136,6 +137,7 @@ alias thenmap="nmap -sV -sC -vvv -T4"
 alias netctl="sudo netctl"
 alias s="sudo"
 alias profilefox="firefox --new-instance --ProfileManager"
+alias goodnight="i3lock -c 111111 -e -b -u && systemctl hibernate"
 
 toburp() {
   for url in `cat $1 | cut -d ' ' -f1`
@@ -153,7 +155,7 @@ cdb() {
 ############
 #some stuff for pyenv to work
 
-export PATH="/home/karl/.pyenv/shims:${PATH}"
+export PATH="$HOME/.pyenv/shims:${PATH}"
 export PYENV_SHELL=bash
 command pyenv rehash 2>/dev/null
 pyenv() {
