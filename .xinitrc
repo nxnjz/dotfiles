@@ -8,6 +8,7 @@ sysmodmap=/etc/X11/xinit/.Xmodmap
 #arch wiki
 xrandr --setprovideroutputsource modesetting NVIDIA-0
 xrandr --auto
+xrdb ~/.Xresources
 
 # merge in defaults and keymaps
 

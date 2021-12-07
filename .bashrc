@@ -111,7 +111,8 @@ export PATH=$PATH:$HOME/go/bin
 export GOPATH=$HOME/go
 export GO111MODULE=on
 export PATH=$PATH:$GOPATH/bin
-export BB=~/Document/bugbounty
+export PATH=$PATH:/home/karl/.gem/ruby/3.0.0/bin
+export BB=~/Documents/bugbounty
 export BB2=~/Documents/bugbountyhdd
 export GITROB_ACCESS_TOKEN=`cat ~/.keys/gitrob`
 
@@ -126,7 +127,7 @@ alias "tl"="task list"
 alias ti=timew
 alias sshh="ssh -o 'UserKnownHostsFile /dev/null'"
 alias ovh="mosh root@ovh.ovh"
-alias contabo="mosh root@0.contabo"
+alias contabo="mosh root@1.contabo"
 alias s0hetz="mosh root@s0.hetz"
 alias s1hetz="mosh root@s1.hetz"
 alias bd=". bd -si"
@@ -138,6 +139,15 @@ alias netctl="sudo netctl"
 alias s="sudo"
 alias profilefox="firefox --new-instance --ProfileManager"
 alias goodnight="i3lock -c 111111 -e -b -u && systemctl hibernate"
+alias wifi="sudo netctl-auto switch-to"
+alias ffdef="firefox -P default"
+
+aqua() {
+  file=`mktemp --dry-run aquaXXXX`
+  echo OUTPUT $file
+  echo HEREDOC e
+  theaquatone -out $file \<\<e
+}
 
 toburp() {
   for url in `cat $1 | cut -d ' ' -f1`

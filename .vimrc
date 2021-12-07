@@ -1,3 +1,4 @@
+set shell=bash
 execute pathogen#infect()
 syntax on
 filetype plugin indent on 
@@ -80,3 +81,7 @@ set softtabstop=2
 set tabstop=2
 set shiftwidth=2
 set expandtab
+
+
+"keep cursor vertically centered whenever possible
+set scrolloff=999

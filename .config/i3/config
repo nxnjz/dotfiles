@@ -8,12 +8,17 @@
 # To get a config file with the same key positions, but for your current
 # layout, use the i3-config-wizard
 
-#no window titles, for gaps to work
-for_window [class="^.*"] border pixel 0 
-gaps inner 1
-gaps outer 1
+#no window titles, for gaps to work. and 2 pix border
+for_window [class="^.*"] border pixel 2 
+# decoration colors
+client.focused          #4c7899 #285577 #ffffff #2e9ef4   #1E90FF
+# only show borders when multiple windows
+hide_edge_borders smart
+#using plain i3wm no gaps
+#gaps inner 1
+#gaps outer 1
 #gaps top 1
-exec xautolock -notify 15 -time 10 -locker 'i3lock -c 111111 -e -b -u' #lock screen
+exec_always xautolock -corners 000- -notify 9 -time 10 -locker 'i3lock -c 111111 -e -b -u' #lock screen
 bindsym Mod1+q exec i3lock -c 111111 -e -b -u #lock screen
 #bind special keyboard keys to volume control
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer sset Master 5%+
@@ -21,10 +26,20 @@ bindsym XF86AudioLowerVolume exec --no-startup-id amixer sset Master 5%-
 exec_always --no-startup-id xset r rate 240 75 #set keyboard repeat rate
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5
-exec_always --no-startup-id compton --active-opacity 1 --inactive-opacity 0.85 --mark-ovredir-focused --use-damage --sw-opti --detect-client-opacity --unredir-if-possible --daemon --opacity-rule 100:class_g="'vlc'" --opacity-rule 100:class_g="'Chromium'" --opacity-rule 100:class_g="'remote-viewer'"
+exec_always --no-startup-id picom --active-opacity 1 --inactive-opacity 0.85  --daemon --opacity-rule 100:class_g="'vlc'" --opacity-rule 100:class_g="'Google-chrome'" --opacity-rule 100:class_g="'remote-viewer'" --opacity-rule 100:class_g="'Thunderbird'" --backend glx -D 0
 exec_always --no-startup-id xset +fp /home/karl/.fonts
 exec_always --no-startup-id xset fp rehash
-bindsym Mod1+x exec i3-msg move workspace to output left 
+#bindsym Mod1+ exec i3-msg move workspace to output left 
+set $mode_launcher move workspace to output [1],[2],[3]
+bindsym Mod1+x mode "$mode_launcher"
+
+mode "$mode_launcher" {
+    bindsym 1 exec i3-msg move workspace to output HDMI-0
+    bindsym 2 exec i3-msg move workspace to output DP-0
+    bindsym 3 exec i3-msg move workspace to output DP-3
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}
 exec_always --no-startup-id /home/karl/bin/fixDisplay.sh
 #exec xrandr --output HDMI-0 --auto --primary --left-of DVI-I-0
 #exec xrandr --output DVI-I-0 --pos 3440x360  #align bottom edges
@@ -38,12 +53,36 @@ exec_always --no-startup-id xinput set-prop 'Synaptics TM3336-001' 'libinput Acc
 exec_always --no-startup-id xinput set-prop 'Synaptics TM3336-001' 'libinput Tapping Enabled' 1
 #mouse mouse accel factor
 exec_always --no-startup-id xinput --set-prop 13 299 0.7
-#exec /home/karl/bin/i3launchapps.sh #autolaunch usual apps in their workspaces
+
+#layout, workspaces, and apps
 exec --no-startup-id "i3-msg 'workspace 1; append_layout ~/.config/i3/ws1.json'"
-exec --no-startup-id "i3-msg 'workspace 3; append_layout ~/.config/i3/ws3.json'"
+exec --no-startup-id "i3-msg 'workspace 2; append_layout ~/.config/i3/ws2.json'"
+#exec --no-startup-id "i3-msg 'workspace 3; append_layout ~/.config/i3/ws3.json'"
+exec --no-startup-id "i3-msg 'workspace 4; append_layout ~/.config/i3/ws4.json'"
+exec --no-startup-id "i3-msg 'workspace 5; append_layout ~/.config/i3/ws5.json'"
+exec --no-startup-id "i3-msg 'workspace 10; append_layout ~/.config/i3/ws10.json'"
+workspace 1 output DP-2
+workspace 2 output HDMI-0
+workspace 4 output HDMI-0
+workspace 5 output HDMI-0
+workspace 10 output DP-0
+exec google-chrome-stable
+exec konsole
+exec konsole
+exec konsole
+exec konsole
+exec konsole
+exec konsole
+exec thunderbird
+#exec opera 
+exec spotify
+exec BurpSuitePro
+exec "firefox -P default"
+
+
 # appstart bindings
 bindsym Mod1+Return exec konsole
-bindsym Mod1+c exec chromium
+bindsym Mod1+c exec google-chrome-stable
 bindsym Mod1+i exec firefox --new-instance --ProfileManager
 bindsym Mod1+b exec burpsuite
 bindsym Mod1+p exec spotify
@@ -52,7 +91,7 @@ bindsym Mod1+o exec localc
 exec --no-startup-id deadd-notification-center
 bindsym Mod1+n exec kill -s USR1 $(pidof deadd-notification-center)
 # bind alt+g to open guake and run task
-bindsym Mod1+g exec guake -t && guake -e t
+bindsym Mod1+g exec guake -t # && guake -e t
 
 
 # Font for window titles. Will also be used by the bar unless a different font
