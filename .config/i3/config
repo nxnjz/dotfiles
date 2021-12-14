@@ -18,7 +18,7 @@ hide_edge_borders smart
 #gaps inner 1
 #gaps outer 1
 #gaps top 1
-exec_always xautolock -corners 000- -notify 9 -time 10 -locker 'i3lock -c 111111 -e -b -u' #lock screen
+exec_always xautolock -corners 000- -notify 10 -notifier 'notify-send -u critical -t 3000 -- "locking in 10 seconds"' -time 10 -locker 'i3lock -c 111111 -e -b -u' #lock screen
 bindsym Mod1+q exec i3lock -c 111111 -e -b -u #lock screen
 #bind special keyboard keys to volume control
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer sset Master 5%+
@@ -26,7 +26,7 @@ bindsym XF86AudioLowerVolume exec --no-startup-id amixer sset Master 5%-
 exec_always --no-startup-id xset r rate 240 75 #set keyboard repeat rate
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5
-exec_always --no-startup-id picom --active-opacity 1 --inactive-opacity 0.85  --daemon --opacity-rule 100:class_g="'vlc'" --opacity-rule 100:class_g="'Google-chrome'" --opacity-rule 100:class_g="'remote-viewer'" --opacity-rule 100:class_g="'Thunderbird'" --backend glx -D 0
+exec_always --no-startup-id picom --active-opacity 1 --inactive-opacity 0.85  --daemon --opacity-rule 100:class_g="'vlc'" --opacity-rule 100:class_g="'Google-chrome'" --opacity-rule 100:class_g="'remote-viewer'" --opacity-rule 100:class_g="'Thunderbird'" --backend xrender -D 0
 exec_always --no-startup-id xset +fp /home/karl/.fonts
 exec_always --no-startup-id xset fp rehash
 #bindsym Mod1+ exec i3-msg move workspace to output left 
